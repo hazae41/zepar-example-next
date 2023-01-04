@@ -4,9 +4,10 @@ async function test() {
   await Zepar.initBundledOnce();
 
   const key = new Uint8Array(16);
-  crypto.getRandomValues(key);
-
   const iv = new Uint8Array(16);
+
+  crypto.getRandomValues(key);
+  crypto.getRandomValues(iv);
 
   const cipher = new Aes128Ctr128BEKey(key, iv);
 
@@ -19,7 +20,6 @@ async function test() {
   console.log(hello);
   console.log(hello2);
 }
-
 
 export default function Page() {
   return <>
